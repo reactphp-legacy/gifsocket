@@ -10,6 +10,10 @@ This is a PHP port of the very awesome
 [gifsockets](https://github.com/videlalvaro/gifsockets) by Alvaro Videla. It
 is using `React/Http` for delivery.
 
+## Installation
+
+Through [composer](http://getcomposer.org).
+
 ## Usage
 
 First, start the example server:
