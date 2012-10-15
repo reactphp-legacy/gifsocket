@@ -93,16 +93,16 @@ class GifEncoder
         $localsRgb = substr($frame, 13,
                             3 * (2 << (ord($frame[10]) & 0x07)));
 
-        $localsExt = "!\xF9\x04" . chr ( ( $this->disposal << 2 ) + 0 ) .
-                        chr ( ( $delay >> 0 ) & 0xFF ) . chr ( ( $delay >> 8 ) & 0xFF ) . "\x0\x0";
+        $localsExt = "!\xF9\x04" . chr(($this->disposal << 2) + 0) .
+                        chr(($delay >> 0) & 0xFF ) . chr(($delay >> 8) & 0xFF) . "\x0\x0";
 
         if ($this->transparentColor !== null && ord($frame[10]) & 0x80) {
             for ($j = 0; $j < (2 << (ord($frame[10]) & 0x07)); $j++) {
                 if (
-                        ord($localsRgb[3 * $j + 0]) == (($this->transparentColor >> 16 ) & 0xFF) &&
-                        ord($localsRgb[3 * $j + 1]) == (($this->transparentColor >>  8 ) & 0xFF) &&
-                        ord($localsRgb[3 * $j + 2]) == (($this->transparentColor >>  0 ) & 0xFF)
-                    ) {
+                    ord($localsRgb[3 * $j + 0]) == (($this->transparentColor >> 16 ) & 0xFF) &&
+                    ord($localsRgb[3 * $j + 1]) == (($this->transparentColor >>  8 ) & 0xFF) &&
+                    ord($localsRgb[3 * $j + 2]) == (($this->transparentColor >>  0 ) & 0xFF)
+                ) {
                     $localsExt = "!\xF9\x04" . chr(($this->disposal << 2 ) + 1) .
                                     chr(($delay >> 0) & 0xFF) . chr(($delay >> 8) & 0xFF) . chr($j) . "\x0";
                     break;
@@ -110,7 +110,7 @@ class GifEncoder
             }
         }
 
-        switch ( $localsTmp { 0 } ) {
+        switch ($localsTmp { 0 }) {
             case "!":
                 $localsImg = substr($localsTmp, 8, 10);
                 $localsTmp = substr($localsTmp, 18, strlen($localsTmp) - 18);
@@ -156,12 +156,12 @@ class GifEncoder
     private function gifBlockCompare($globalBlock, $localBlock, $length)
     {
         for ($i = 0; $i < $length; $i++) {
-            if  (
-                    $globalBlock [3 * $i + 0] != $localBlock [3 * $i + 0] ||
-                    $globalBlock [3 * $i + 1] != $localBlock [3 * $i + 1] ||
-                    $globalBlock [3 * $i + 2] != $localBlock [3 * $i + 2]
-                ) {
-                    return false;
+            if (
+                $globalBlock [3 * $i + 0] != $localBlock [3 * $i + 0] ||
+                $globalBlock [3 * $i + 1] != $localBlock [3 * $i + 1] ||
+                $globalBlock [3 * $i + 2] != $localBlock [3 * $i + 2]
+            ) {
+                return false;
             }
         }
 

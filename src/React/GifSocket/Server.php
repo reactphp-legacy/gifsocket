@@ -2,7 +2,6 @@
 
 namespace React\GifSocket;
 
-use Evenement\EventEmitter;
 use React\Curry\Util as Curry;
 use React\GifSocket\GifEncoder;
 use React\GifSocket\GifStream;
