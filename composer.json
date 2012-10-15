@@ -4,7 +4,7 @@
     "keywords": ["gifsocket", "gifsockets"],
     "license": "MIT",
     "require": {
-        "php": ">=5.3.2",
+        "php": ">=5.4.0",
         "react/curry": "dev-master",
         "react/http": "0.2.*"
     },
