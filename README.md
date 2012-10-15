@@ -4,6 +4,7 @@
 Videla.
 
 ![Mind Blown](https://raw.github.com/react-php/gifsocket/master/doc/mybrain.gif)
+![React](https://raw.github.com/react-php/gifsocket/master/doc/react.png)
 
 This is a PHP port of the very awesome
 [gifsockets](https://github.com/videlalvaro/gifsockets) by Alvaro Videla. It
