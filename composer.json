@@ -5,6 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
+        "ext-gd": "*",
         "react/curry": "dev-master",
         "react/http": "0.2.*"
     },
