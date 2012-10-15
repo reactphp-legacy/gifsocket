@@ -16,10 +16,10 @@ First, start the example server:
 
     $ php server.php
 
-Next, connect a client by going to `localhost:8080`. Now you can start typing
-stuff into the server window. Each line captured by STDIN will be converted to
-a GIF frame and streamed to the browser in Real Time (tm), also known as
-Netscape Time (tm).
+Next, open up a browser and point it to `localhost:8080`. Now you can start
+typing stuff into the server window. Each line captured by STDIN will be
+converted to a GIF frame and streamed to the browser in Real Time (tm), also
+known as Netscape Time (tm).
 
 ## License
 
