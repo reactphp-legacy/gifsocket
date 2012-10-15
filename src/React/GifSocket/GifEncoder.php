@@ -110,7 +110,7 @@ class GifEncoder
             }
         }
 
-        switch ($localsTmp { 0 }) {
+        switch ($localsTmp[0]) {
             case "!":
                 $localsImg = substr($localsTmp, 8, 10);
                 $localsTmp = substr($localsTmp, 18, strlen($localsTmp) - 18);
