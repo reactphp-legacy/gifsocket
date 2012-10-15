@@ -21,10 +21,10 @@ $loop = React\EventLoop\Factory::create();
 $socket = new React\Socket\Server($loop);
 $http = new React\Http\Server($socket);
 
-$gifServer = new React\GifSocket\Server();
+$gifServer = new React\GifSocket\Server($loop);
 $stdin = new React\Stream\Stream(STDIN, $loop);
 
-$stdin->on('data', function ($data) use ($gifServer) {
+$stdin->on('data', function ($data) use ($gifServer, $loop) {
     $frame = createGifFrame(trim($data));
     $gifServer->addFrame($frame);
 });

@@ -20,7 +20,7 @@ class GifStream extends EventEmitter implements ReadableStreamInterface
     public function addFrame($frame, $delay = 0)
     {
         $data = $this->encoder->addFrame($frame, $delay);
-        $this->emit('data', array($data));
+        $this->emit('data', [$data]);
     }
 
     public function isReadable()
@@ -39,7 +39,7 @@ class GifStream extends EventEmitter implements ReadableStreamInterface
     public function close()
     {
         $data = $this->finish();
-        $this->emit('data', array($data));
+        $this->emit('data', [$data]);
 
         $this->closed = true;
         $this->emit('close');
