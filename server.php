@@ -29,7 +29,11 @@ $stdin->on('data', function ($data) use ($gifServer, $loop) {
     $gifServer->addFrame($frame);
 });
 
-$http->on('request', $gifServer);
+$router = new React\GifSocket\Router([
+    '/' => $gifServer,
+]);
+
+$http->on('request', $router);
 
 $socket->listen(8080);
 $loop->run();
