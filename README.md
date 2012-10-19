@@ -25,6 +25,22 @@ typing stuff into the server window. Each line captured by STDIN will be
 converted to a GIF frame and streamed to the browser in Real Time (tm), also
 known as Netscape Time (tm).
 
+## Browser support
+
+Good:
+
+* IE6
+* Safari
+* Firefox
+
+Bad:
+
+* Opera
+
+Non-existent:
+
+* Chrome
+
 ## License
 
 MIT, see LICENSE.
