@@ -18,7 +18,7 @@ Through [composer](http://getcomposer.org).
 
 First, start the example server:
 
-    $ php server.php
+    $ php examples/stdin.php
 
 Next, open up a browser and point it to `localhost:8080`. Now you can start
 typing stuff into the server window. Each line captured by STDIN will be
