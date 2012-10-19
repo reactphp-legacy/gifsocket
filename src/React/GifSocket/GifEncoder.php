@@ -68,7 +68,7 @@ class GifEncoder
             $data .= substr($initialFrame, 6, 7);
             $data .= substr($initialFrame, 13, $cmap);
             if ($this->loopCount >= 0) {
-                $data .= "!\377\13NETSCAPE2.0\3\1" . $this->gifWord($this->loopCount) . "\0";
+                $data .= "!\377\13NETSCAPE2.0\3\1".$this->gifWord($this->loopCount)."\0";
             }
         }
 
@@ -93,18 +93,18 @@ class GifEncoder
         $localsRgb = substr($frame, 13,
                             3 * (2 << (ord($frame[10]) & 0x07)));
 
-        $localsExt = "!\xF9\x04" . chr(($this->disposal << 2) + 0) .
-                        chr(($delay >> 0) & 0xFF ) . chr(($delay >> 8) & 0xFF) . "\x0\x0";
+        $localsExt = "!\xF9\x04".chr(($this->disposal << 2) + 0).
+                        chr(($delay >> 0) & 0xFF ).chr(($delay >> 8) & 0xFF)."\x0\x0";
 
         if ($this->transparentColor !== null && ord($frame[10]) & 0x80) {
             for ($j = 0; $j < (2 << (ord($frame[10]) & 0x07)); $j++) {
                 if (
-                    ord($localsRgb[3 * $j + 0]) == (($this->transparentColor >> 16 ) & 0xFF) &&
-                    ord($localsRgb[3 * $j + 1]) == (($this->transparentColor >>  8 ) & 0xFF) &&
-                    ord($localsRgb[3 * $j + 2]) == (($this->transparentColor >>  0 ) & 0xFF)
+                    ord($localsRgb[3 * $j + 0]) == (($this->transparentColor >> 16) & 0xFF) &&
+                    ord($localsRgb[3 * $j + 1]) == (($this->transparentColor >>  8) & 0xFF) &&
+                    ord($localsRgb[3 * $j + 2]) == (($this->transparentColor >>  0) & 0xFF)
                 ) {
-                    $localsExt = "!\xF9\x04" . chr(($this->disposal << 2 ) + 1) .
-                                    chr(($delay >> 0) & 0xFF) . chr(($delay >> 8) & 0xFF) . chr($j) . "\x0";
+                    $localsExt = "!\xF9\x04".chr(($this->disposal << 2 ) + 1).
+                                    chr(($delay >> 0) & 0xFF).chr(($delay >> 8) & 0xFF).chr($j)."\x0";
                     break;
                 }
             }
@@ -124,14 +124,14 @@ class GifEncoder
         if (ord($frame[10]) & 0x80 && null !== $this->initialFrame) {
             if ($globalLen == $localsLen) {
                 if ($this->gifBlockCompare($globalRgb, $localsRgb, $globalLen)) {
-                    $data .= $localsExt . $localsImg . $localsTmp;
+                    $data .= $localsExt.$localsImg.$localsTmp;
                 } else {
                     $byte  = ord($localsImg[9]);
                     $byte |= 0x80;
                     $byte &= 0xF8;
                     $byte |= ord($this->initialFrame[10]) & 0x07;
                     $localsImg[9] = chr($byte);
-                    $data .= $localsExt . $localsImg . $localsRgb . $localsTmp;
+                    $data .= $localsExt.$localsImg.$localsRgb.$localsTmp;
                 }
             } else {
                 $byte  = ord($localsImg[9]);
@@ -139,10 +139,10 @@ class GifEncoder
                 $byte &= 0xF8;
                 $byte |= ord($frame[10]) & 0x07;
                 $localsImg[9] = chr($byte);
-                $data .= $localsExt . $localsImg . $localsRgb . $localsTmp;
+                $data .= $localsExt.$localsImg.$localsRgb.$localsTmp;
             }
         } else {
-            $data .= $localsExt . $localsImg . $localsTmp;
+            $data .= $localsExt.$localsImg.$localsTmp;
         }
 
         return $data;
@@ -157,9 +157,9 @@ class GifEncoder
     {
         for ($i = 0; $i < $length; $i++) {
             if (
-                $globalBlock [3 * $i + 0] != $localBlock [3 * $i + 0] ||
-                $globalBlock [3 * $i + 1] != $localBlock [3 * $i + 1] ||
-                $globalBlock [3 * $i + 2] != $localBlock [3 * $i + 2]
+                $globalBlock[3 * $i + 0] != $localBlock[3 * $i + 0] ||
+                $globalBlock[3 * $i + 1] != $localBlock[3 * $i + 1] ||
+                $globalBlock[3 * $i + 2] != $localBlock[3 * $i + 2]
             ) {
                 return false;
             }
@@ -170,6 +170,6 @@ class GifEncoder
 
     private function gifWord($int)
     {
-        return chr($int & 0xFF) . chr(($int >> 8) & 0xFF);
+        return chr($int & 0xFF).chr(($int >> 8) & 0xFF);
     }
 }
