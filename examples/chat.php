@@ -19,6 +19,14 @@ function createGifFrame(array $messages)
     return ob_get_clean();
 }
 
+function sendEmptyFrameAfter($gifServer)
+{
+    return function ($request, $response) use ($gifServer) {
+        $gifServer($request, $response);
+        $gifServer->addFrame(createGifFrame(['']));
+    };
+}
+
 $loop = React\EventLoop\Factory::create();
 $socket = new React\Socket\Server($loop);
 $http = new React\Http\Server($socket);
@@ -37,7 +45,7 @@ $addMessage = function ($message) use ($gifServer, &$messages) {
 };
 
 $router = new React\GifSocket\Router([
-    '/socket.gif' => $gifServer,
+    '/socket.gif' => sendEmptyFrameAfter($gifServer),
     '/' => function ($request, $response) {
         $response->writeHead(200, ['Content-Type' => 'text/html']);
         $response->end(file_get_contents(__DIR__.'/views/index.html'));
