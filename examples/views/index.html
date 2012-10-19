@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gifsocket chat</title>
+</head>
+<body>
+
+<img src="socket.gif">
+
+<form action="/message">
+    <input type="text" name="message" autocomplete="off">
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+document.querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var form = event.target;
+    var input = form.querySelector('[name=message]');
+    var message = input.value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action+'?message='+escape(message));
+    xhr.send();
+
+    input.value = '';
+}, false);
+</script>
+
+</body>
+</html>
