@@ -46,9 +46,12 @@ $addMessage = function ($message) use ($gifServer, &$messages) {
 
 $router = new React\GifSocket\Router([
     '/socket.gif' => sendEmptyFrameAfter($gifServer),
-    '/' => function ($request, $response) {
+    '/' => function ($request, $response) use ($loop) {
         $response->writeHead(200, ['Content-Type' => 'text/html']);
-        $response->end(file_get_contents(__DIR__.'/views/index.html'));
+
+        $fd = fopen(__DIR__.'/views/index.html', 'r');
+        $template = new React\Stream\Stream($fd, $loop);
+        $template->pipe($response);
     },
     '/message' => function ($request, $response) use ($addMessage) {
         $message = $request->getQuery()['message'];
