@@ -3,8 +3,8 @@
 "Real Time communication library using Animated Gifs as a transport™" - Alvaro
 Videla.
 
-![React](https://raw.github.com/react-php/gifsocket/master/doc/react.png)
-![Mind Blown](https://raw.github.com/react-php/gifsocket/master/doc/mybrain.gif)
+![React](https://raw.github.com/reactphp/gifsocket/master/doc/react.png)
+![Mind Blown](https://raw.github.com/reactphp/gifsocket/master/doc/mybrain.gif)
 
 This is a PHP port of the very awesome
 [gifsockets](https://github.com/videlalvaro/gifsockets) by Alvaro Videla. It
