@@ -170,18 +170,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/curry",
-                "reference": "eb122f2dfe05450f4b832dd6387d72affd3d4708"
+                "reference": "36b3688c27a6f51368fe73364cc84f2d12a700b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/reactphp/curry/zipball/eb122f2dfe05450f4b832dd6387d72affd3d4708",
-                "reference": "eb122f2dfe05450f4b832dd6387d72affd3d4708",
+                "url": "https://github.com/reactphp/curry/zipball/36b3688c27a6f51368fe73364cc84f2d12a700b1",
+                "reference": "36b3688c27a6f51368fe73364cc84f2d12a700b1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1351350461",
+            "time": "1351351089",
             "type": "library",
             "installation-source": "source",
             "autoload": {
