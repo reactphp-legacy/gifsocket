@@ -1,6 +1,6 @@
 <?php
 
-namespace React\GifSocket;
+namespace React\Gifsocket;
 
 use React\Curry\Util as Curry;
 use React\EventLoop\LoopInterface;

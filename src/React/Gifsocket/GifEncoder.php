@@ -2,7 +2,7 @@
 
 // based on GIFEncoder by László Zsidi, http://gifs.hu
 
-namespace React\GifSocket;
+namespace React\Gifsocket;
 
 class GifEncoder
 {

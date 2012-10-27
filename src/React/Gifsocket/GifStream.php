@@ -1,6 +1,6 @@
 <?php
 
-namespace React\GifSocket;
+namespace React\Gifsocket;
 
 use Evenement\EventEmitter;
 use React\Stream\ReadableStreamInterface;
@@ -46,7 +46,7 @@ class GifStream extends EventEmitter implements ReadableStreamInterface
         $this->removeAllListeners();
     }
 
-    public function pipe(WritableStreamInterface $dest, array $options = array())
+    public function pipe(WritableStreamInterface $dest, array $options = [])
     {
         Util::pipe($this, $dest, $options);
 

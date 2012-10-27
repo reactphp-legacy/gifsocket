@@ -1,4 +1,4 @@
-# React/GifSocket
+# React/Gifsocket
 
 "Real Time communication library using Animated Gifs as a transport™" - Alvaro
 Videla.

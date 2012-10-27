@@ -1,6 +1,6 @@
 <?php
 
-namespace React\GifSocket;
+namespace React\Gifsocket;
 
 class Router
 {

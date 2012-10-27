@@ -31,9 +31,9 @@ $loop = React\EventLoop\Factory::create();
 $socket = new React\Socket\Server($loop);
 $http = new React\Http\Server($socket);
 
-$gifServer = new React\GifSocket\Server($loop);
+$gifServer = new React\Gifsocket\Server($loop);
 
-$messages = array();
+$messages = [];
 $addMessage = function ($message) use ($gifServer, &$messages) {
     $messages[] = $message;
     if (count($messages) > 18) {
@@ -52,7 +52,7 @@ $stdin->on('data', function ($data) use ($addMessage) {
     }
 });
 
-$router = new React\GifSocket\Router([
+$router = new React\Gifsocket\Router([
     '/' => sendEmptyFrameAfter($gifServer),
 ]);
 

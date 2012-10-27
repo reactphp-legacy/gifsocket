@@ -10,6 +10,6 @@
         "react/http": "0.2.*"
     },
     "autoload": {
-        "psr-0": { "React\\GifSocket": "src" }
+        "psr-0": { "React\\Gifsocket": "src" }
     }
 }
