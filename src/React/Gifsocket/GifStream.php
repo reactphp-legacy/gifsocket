@@ -38,7 +38,11 @@ class GifStream extends EventEmitter implements ReadableStreamInterface
 
     public function close()
     {
-        $data = $this->finish();
+        if ($this->closed) {
+            return;
+        }
+
+        $data = $this->encoder->finish();
         $this->emit('data', [$data]);
 
         $this->closed = true;

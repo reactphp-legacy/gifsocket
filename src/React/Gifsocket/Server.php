@@ -41,8 +41,13 @@ class Server
         $gif->pipe($response);
 
         $this->gifStreams->attach($gif);
-        $request->on('close',
-            Curry::bind([$this->gifStreams, 'detach'], $gif));
+
+        $response->on('close', function () use ($gif) {
+            echo "response:close\n";
+
+            $this->gifStreams->detach($gif);
+            $gif->close();
+        });
     }
 
     public function resendFrame(GifStream $gif, $frame)
