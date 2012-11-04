@@ -14,7 +14,7 @@ class Router
     public function __invoke($request, $response)
     {
         foreach ($this->routes as $pattern => $controller) {
-            if ($this->pathMatchesPattern($request->getPath(), $pattern)) {
+            if ($this->pathMatchesPattern($request->getPath(), $pattern, $controller)) {
                 $controller($request, $response);
                 return;
             }
@@ -23,7 +23,7 @@ class Router
         $this->handleNotFound($request, $response);
     }
 
-    protected function pathMatchesPattern($requestPath, $pattern)
+    protected function pathMatchesPattern($requestPath, $pattern, $controller)
     {
         return $pattern === $requestPath;
     }
