@@ -13,8 +13,8 @@ class Router
 
     public function __invoke($request, $response)
     {
-        foreach ($this->routes as $path => $controller) {
-            if ($path === $request->getPath()) {
+        foreach ($this->routes as $pattern => $controller) {
+            if ($this->pathMatchesPattern($request->getPath(), $pattern)) {
                 $controller($request, $response);
                 return;
             }
@@ -23,7 +23,12 @@ class Router
         $this->handleNotFound($request, $response);
     }
 
-    private function handleNotFound($request, $response)
+    protected function pathMatchesPattern($requestPath, $pattern)
+    {
+        return $pattern === $requestPath;
+    }
+
+    protected function handleNotFound($request, $response)
     {
         $response->writeHead(404, ['Content-Type' => 'text/plain']);
         $response->end("We are sorry to inform you that the requested resource does not exist.");
