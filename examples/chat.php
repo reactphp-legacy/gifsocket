@@ -64,5 +64,7 @@ $router = new React\Gifsocket\Router([
 
 $http->on('request', $router);
 
+echo "Webserver running on localhost:8080\n";
+
 $socket->listen(8080);
 $loop->run();
